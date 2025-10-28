@@ -8,10 +8,10 @@ tuning that I learned and subsequently built.
 
 ## 🏗️ Architecture
 
-### Model Components
+### Model Components (Husk/kernel design patter)
 
 - **[ConvLSTMCell](./convLSTMcell.py)** - Core ConvLSTM cell implementation with gating mechanisms
-- **[ConvLSTM](./convLSTM.py)** - Full network wrapper with output projection layer
+- **[ConvLSTM](./convLSTM.py)** - network wrapper 
 
 ### Architecture Diagram
 ![Model Architecture](./model_architecture.png)
