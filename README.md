@@ -1,7 +1,10 @@
 # LSTM Research Repository
 
 A PyTorch implementation of Convolutional LSTM (ConvLSTM) for spatial-temporal data processing, designed for microbubble detection on 
-B-mode adn C-mode images.
+B-mode adn C-mode images. The repository doesn't contain the underlying data and training loop out of respect for the proprietary nature
+of the data not belonging to me, however, this repositiory exists to showcase the underlying LSTM architecture for data pipelining and parameter
+tuning that I learned and subsequently built. 
+
 
 ## 📋 Overview
 
@@ -57,6 +60,6 @@ model = ConvLSTM(input_channels=2, hidden_channels=32)
 hidden = None
 
 for frame in sequence:
-    output, hidden = model(frame, hidden, cell)
-    # Process output...
+    output, (hidden, cell) = model(frame, hidden, cell)
+    # Process output, and reuse the new hidden and cell state for the next iteration...
 ```
