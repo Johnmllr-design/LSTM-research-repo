@@ -1,3 +1,62 @@
-# LSTM-research-repo
+# LSTM Research Repository
 
-<iframe src="https://grinco-my.sharepoint.com/personal/millerjo2_grinnell_edu/_layouts/15/Doc.aspx?sourcedoc={7bd00abb-f2bb-48b4-9108-e2da1728ce7e}&amp;action=embedview" width="476px" height="288px" frameborder="0">This is an embedded <a target="_blank" href="https://office.com">Microsoft Office</a> document, powered by <a target="_blank" href="https://office.com/webapps">Office</a>.</iframe> 
+A PyTorch implementation of Convolutional LSTM (ConvLSTM) for spatial-temporal data processing, designed for microbubble detection on 
+B-mode adn C-mode images.
+
+## 📋 Overview
+
+This repository contains a documented, modularized model architecture for 
+
+## 🏗️ Architecture
+
+### Model Components
+
+- **[ConvLSTMCell](./convLSTMcell.py)** - Core ConvLSTM cell implementation with gating mechanisms
+- **[ConvLSTM](./convLSTM.py)** - Full network wrapper with output projection layer
+
+### Architecture Diagram
+![Model Architecture](./model_architecture.png)
+
+## Research Documentation
+
+📋 **[Research Report (PDF)](./Miller_John_Report.pdf)** - technical documentation and analysis
+
+## 📊 Research Poster
+
+![Research Poster](./poster.png)
+
+## Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/LSTM-research-repo.git
+cd LSTM-research-repo
+
+# Install dependencies
+pip install torch torchvision
+```
+
+
+### Basic Usage
+
+```python
+import torch
+from convLSTM import ConvLSTM
+
+# Initialize the model
+model = ConvLSTM(input_channels=2, hidden_channels=32)
+
+# Process input data
+input_tensor = torch.randn(1, 2, 256, 256)  # (batch, channels, height, width)
+output, hidden_states = model(input_tensor)
+
+print(f"Output shape: {output.shape}")  # (1, 1, 256, 256)
+
+# For processing sequences
+model = ConvLSTM(input_channels=2, hidden_channels=32)
+hidden = None
+
+for frame in sequence:
+    output, hidden = model(frame, hidden, cell)
+    # Process output...
+```
