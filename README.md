@@ -6,10 +6,6 @@ of the data not belonging to me, however, this repositiory exists to showcase th
 tuning that I learned and subsequently built. 
 
 
-## 📋 Overview
-
-This repository contains a documented, modularized model architecture for 
-
 ## 🏗️ Architecture
 
 ### Model Components
@@ -43,22 +39,10 @@ pip install torch torchvision
 ### Basic Usage
 
 ```python
-import torch
-from convLSTM import ConvLSTM
+# Some pseudocode
 
-# Initialize the model
-model = ConvLSTM(input_channels=2, hidden_channels=32)
-
-# Process input data
-input_tensor = torch.randn(1, 2, 256, 256)  # (batch, channels, height, width)
-output, hidden_states = model(input_tensor)
-
-print(f"Output shape: {output.shape}")  # (1, 1, 256, 256)
-
-# For processing sequences
-model = ConvLSTM(input_channels=2, hidden_channels=32)
-hidden = None
-
+# The key is to utilize the hidden and cell state to maintain and modify the
+# amount of "memory" is carried into the next inference frame
 for frame in sequence:
     output, (hidden, cell) = model(frame, hidden, cell)
     # Process output, and reuse the new hidden and cell state for the next iteration...
